@@ -74,8 +74,19 @@ try {
                             <td><?php echo htmlspecialchars($student['subject']); ?></td>
                             <td><?php echo format_money($student['monthly_fee']); ?></td>
                             <td>
-                                <span class="badge <?php echo $student['status'] === 'active' ? 'badge-success' : 'badge-danger'; ?>" style="padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.85rem; background-color: <?php echo $student['status'] === 'active' ? '#d1e7dd' : '#f8d7da'; ?>; color: <?php echo $student['status'] === 'active' ? '#0f5132' : '#842029'; ?>;">
-                                    <?php echo ucfirst(htmlspecialchars($student['status'])); ?>
+                                <?php 
+                                $payment_status = get_student_payment_status($student['id'], $pdo);
+                                $status_colors = [
+                                    'paid' => ['bg' => '#d1e7dd', 'text' => '#0f5132'],
+                                    'due soon' => ['bg' => '#fff3cd', 'text' => '#856404'],
+                                    'late' => ['bg' => '#f8d7da', 'text' => '#842029'],
+                                    'unpaid' => ['bg' => '#e2e3e5', 'text' => '#383d41'],
+                                    'unknown' => ['bg' => '#f8fafc', 'text' => '#64748b']
+                                ];
+                                $colors = $status_colors[$payment_status] ?? $status_colors['unknown'];
+                                ?>
+                                <span class="badge" style="padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.85rem; background-color: <?php echo $colors['bg']; ?>; color: <?php echo $colors['text']; ?>;">
+                                    <?php echo ucfirst(htmlspecialchars($payment_status)); ?>
                                 </span>
                             </td>
                             <td>
