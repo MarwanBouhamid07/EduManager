@@ -21,11 +21,13 @@
     padding: 0;
 }
 
-a, button {
+a,
+button {
     transition: all 0.2s ease-in-out;
 }
 
-.stat-card:hover, .table-container:hover {
+.stat-card:hover,
+.table-container:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
@@ -142,14 +144,38 @@ body {
 
 /* Dashboard Layout */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 260px;
+    height: 100vh;
     background-color: #1e293b;
     /* Dark Slate */
     color: #fff;
-    flex-shrink: 0;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    z-index: 1000;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-top {
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.sidebar-top::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-top::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.sidebar-bottom {
+    flex-shrink: 0;
 }
 
 .sidebar-header {
@@ -160,7 +186,6 @@ body {
 }
 
 .sidebar-nav {
-    flex: 1;
     padding: 1rem 0;
 }
 
@@ -188,8 +213,9 @@ body {
 
 .main-content {
     flex: 1;
+    margin-left: 260px;
     padding: 2rem;
-    overflow-y: auto;
+    min-height: 100vh;
 }
 
 .top-bar {
@@ -301,4 +327,72 @@ body {
 .status-late {
     background-color: #fee2e2;
     color: #991b1b;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar-header {
+        font-size: 0.7rem;
+        padding: 1rem 0.5rem;
+        text-align: center;
+    }
+
+    .nav-link {
+        padding: 1rem 0.5rem;
+        justify-content: center;
+        font-size: 0;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        height: 65px;
+        flex-direction: row;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-top {
+        flex-direction: row;
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding-bottom: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-bottom: 65px;
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
 }
