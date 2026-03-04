@@ -1,4 +1,4 @@
--- Database: student_payment_system
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -6,9 +6,9 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `users`
---
+
+-- Table `users`
+
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -29,9 +29,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `students`
---
+
+-- Table `students`
 
 CREATE TABLE `students` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -51,9 +50,9 @@ CREATE TABLE `students` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `payments`
---
+
+-- Table `payments`
+
 
 CREATE TABLE `payments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
