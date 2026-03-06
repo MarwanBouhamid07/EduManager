@@ -15,7 +15,7 @@ function display_flash_message() {
         </div>
         ";
 
-        // Important: Clear message after display
+        
         unset($_SESSION['message'], $_SESSION['message_type']);
     }
 }
