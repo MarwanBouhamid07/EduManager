@@ -1,8 +1,5 @@
 <?php
-/**
- * Display Flash Message
- * Renders a consistent alert based on session message
- */
+
 function display_flash_message() {
     if (isset($_SESSION['message'])) {
         $message = $_SESSION['message'];
