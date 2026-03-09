@@ -13,8 +13,14 @@
             <a href="payments.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'payments.php' ? 'active' : ''; ?>">
                 Payments
             </a>
+            <a href="expenses.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'expenses.php' ? 'active' : ''; ?>">
+                Expenses
+            </a>
             <a href="reports.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'reports.php' ? 'active' : ''; ?>">
                 Reports
+            </a>
+            <a href="overdue_students.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'overdue_students.php' ? 'active' : ''; ?>">
+                Overdue Students
             </a>
             <a href="settings.php" class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">
                 Settings
