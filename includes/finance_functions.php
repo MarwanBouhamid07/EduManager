@@ -31,6 +31,22 @@ function get_collected_monthly_revenue($pdo) {
 }
 
 /**
+ * NEW FEATURE: Total Expenses
+ * Sum of expenses in the current month/year
+ */
+function get_total_monthly_expenses($pdo) {
+    $month = date('m');
+    $year = date('Y');
+    $stmt = $pdo->prepare("
+        SELECT SUM(amount) 
+        FROM expenses 
+        WHERE MONTH(expense_date) = ? AND YEAR(expense_date) = ?
+    ");
+    $stmt->execute([$month, $year]);
+    return (float)($stmt->fetchColumn() ?: 0);
+}
+
+/**
  * FEATURE 3: Lost Revenue (Outstanding Debt)
  * Logic: (months_enrolled) - (months_paid)
  */
