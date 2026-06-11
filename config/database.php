@@ -1,7 +1,7 @@
 <?php
 // Config: Database Connection
 
-$host = '127.0.0.1'; // Use 127.0.0.1 instead of localhost for better Windows compatibility
+$host = 'localhost'; // Use 127.0.0.1 instead of localhost for better Windows compatibility
 $db_name = 'student_payment_system';
 $username = 'student_admin';
 $password = 'password123';

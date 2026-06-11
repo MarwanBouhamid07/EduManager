@@ -329,6 +329,14 @@ body {
     color: #991b1b;
 }
 
+.row-debt {
+    background-color: #fee2e2;
+}
+
+.row-debt td {
+    color: #991b1b;
+}
+
 /* Responsiveness */
 @media (max-width: 1024px) {
     .sidebar {

@@ -48,7 +48,7 @@ function get_recent_payments($pdo, $limit = 5) {
         ORDER BY p.payment_date DESC, p.created_at DESC 
         LIMIT :limit
     ");
-    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
+    $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);// i don't use excute because it is send values like string
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

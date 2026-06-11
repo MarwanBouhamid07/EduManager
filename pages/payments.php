@@ -122,6 +122,7 @@ $current_date = date('Y-m-d');
                             </td>
                             <td>
                                 <a href="edit_payment.php?id=<?php echo $payment['id']; ?>" class="btn-sm" style="color: var(--text-color); margin-right: 0.5rem; text-decoration: none;">Edit</a>
+                                <a href="../actions/print_receipt.php?id=<?php echo $payment['id']; ?>" class="btn-sm" target="_blank" style="color: #2563eb; margin-right: 0.5rem; text-decoration: none;">Print PDF</a>
                                 <form action="../actions/delete_payment.php" method="POST" style="display: inline;" onsubmit="return confirm('Delete this payment record? This action cannot be undone.');">
                                     <input type="hidden" name="id" value="<?php echo $payment['id']; ?>">
                                     <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">

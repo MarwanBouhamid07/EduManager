@@ -39,7 +39,7 @@ try {
 
     <div class="action-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 1rem;">
         <form method="GET" style="display: flex; gap: 0.5rem; flex: 1; max-width: 400px;">
-            <input type="text" name="search" placeholder="Search by name or phone..." value="<?php echo htmlspecialchars($search); ?>" style="flex: 1; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.9rem;">
+            <input type="text" name="search" placehholder="Searc by name or phone..." value="<?php echo htmlspecialchars($search); ?>" style="flex: 1; padding: 0.6rem; border: 1px solid var(--border-color); border-radius: 0.5rem; font-size: 0.9rem;">
             <button type="submit" class="btn btn-primary" style="padding: 0.6rem 1rem; border-radius: 0.5rem; background-color: var(--primary-color); color: white; border: none; cursor: pointer;">Search</button>
             <?php if ($search): ?>
                 <a href="students.php" style="padding: 0.6rem; color: #666; text-decoration: none; font-size: 0.9rem;">Clear</a>

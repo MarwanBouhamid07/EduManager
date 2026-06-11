@@ -9,6 +9,8 @@ try {
     $expected_revenue = get_expected_monthly_revenue($pdo);
     $collected_revenue = get_collected_monthly_revenue($pdo);
     $outstanding_debt = get_total_outstanding_debt($pdo);
+    $total_expenses = get_total_monthly_expenses($pdo);
+    $net_profit = $collected_revenue - $total_expenses;
     
     // Feature 4: Discipline Rate
     $discipline_rate = ($expected_revenue > 0) ? round(($collected_revenue / $expected_revenue) * 100) : 0;
@@ -46,34 +48,32 @@ include '../includes/sidebar.php';
 
     <!-- Financial Analytics Cards -->
     <div class="stats-grid">
-        <!-- Feature 1: Expected Revenue -->
-        <div class="stat-card" style="border-left: 4px solid #3b82f6;">
-            <div class="stat-title">Expected Revenue</div>
-            <div class="stat-value" style="color: #1e40af;"><?php echo format_money($expected_revenue); ?></div>
-            <div class="stat-change text-primary">Target for this month</div>
-        </div>
-
-        <!-- Feature 2: Collected Revenue -->
+        <!-- Feature 1: Collected Revenue -->
         <div class="stat-card" style="border-left: 4px solid #10b981;">
-            <div class="stat-title">Collected Revenue</div>
+            <div class="stat-title">Total Income</div>
             <div class="stat-value" style="color: #065f46;"><?php echo format_money($collected_revenue); ?></div>
             <div class="stat-change text-success">Actual receipts this month</div>
         </div>
 
-        <!-- Feature 3: Outstanding Debt -->
+        <!-- NEW: Total Expenses -->
         <div class="stat-card" style="border-left: 4px solid #ef4444;">
-            <div class="stat-title">Outstanding Debt</div>
-            <div class="stat-value" style="color: #991b1b;"><?php echo format_money($outstanding_debt); ?></div>
-            <div class="stat-change text-danger">Total unpaid revenue</div>
+            <div class="stat-title">Total Expenses</div>
+            <div class="stat-value" style="color: #991b1b;"><?php echo format_money($total_expenses); ?></div>
+            <div class="stat-change text-danger">Total expenses this month</div>
         </div>
 
-        <!-- Feature 4: Discipline Rate -->
+        <!-- NEW: Net Profit -->
+        <div class="stat-card" style="border-left: 4px solid #3b82f6;">
+            <div class="stat-title">Net Profit</div>
+            <div class="stat-value" style="color: <?php echo $net_profit >= 0 ? '#059669' : '#dc2626'; ?>;"><?php echo format_money($net_profit); ?></div>
+            <div class="stat-change" style="color: <?php echo $net_profit >= 0 ? '#10b981' : '#ef4444'; ?>;"> Income - Expenses</div>
+        </div>
+
+        <!-- Feature 3: Outstanding Debt -->
         <div class="stat-card" style="border-left: 4px solid #f59e0b;">
-            <div class="stat-title">Payment Discipline</div>
-            <div class="stat-value" style="color: #92400e;"><?php echo $discipline_rate; ?>%</div>
-            <div style="width: 100%; height: 8px; background: #fee2e2; border-radius: 4px; margin-top: 10px; overflow: hidden;">
-                <div style="width: <?php echo $discipline_rate; ?>%; height: 100%; background: #f59e0b;"></div>
-            </div>
+            <div class="stat-title">Outstanding Debt</div>
+            <div class="stat-value" style="color: #92400e;"><?php echo format_money($outstanding_debt); ?></div>
+            <div class="stat-change text-warning">Total unpaid revenue</div>
         </div>
     </div>
 
